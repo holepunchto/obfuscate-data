@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Reversibly obfuscate data with a secret key",
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "format": "prettier --write .",
     "test": "prettier --check . && node test.js"
