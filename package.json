@@ -1,0 +1,30 @@
+{
+  "name": "obfuscate-data",
+  "version": "1.0.0",
+  "description": "Reversibly obfuscate data with a secret key",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "test": "prettier --check . && node test.js"
+  },
+  "keywords": [],
+  "author": "Holepunch Inc.",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "b4a": "^1.7.3",
+    "prettier": "^3.6.2",
+    "prettier-config-holepunch": "^2.0.0",
+    "sodium-universal": "^5.0.1"
+  },
+  "devDependencies": {
+    "brittle": "^3.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holepunchto/obfuscate-data.git"
+  },
+  "bugs": {
+    "url": "https://github.com/holepunchto/obfuscate-data/issues"
+  },
+  "homepage": "https://github.com/holepunchto/obfuscate-data#readme"
+}
