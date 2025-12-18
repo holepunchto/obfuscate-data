@@ -7,7 +7,7 @@ Reversibly obfuscate data with a secret key
 ```js
 const obf = require('obfuscate-data')
 
-const key = obf.generateKey
+const key = obf.generateKey()
 
 const obfuscated = obf.obfuscate(data, key)
 const deobfuscated = obf.deobfuscate(obfuscated, key)
