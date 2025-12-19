@@ -15,6 +15,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "b4a": "^1.7.3",
+    "compact-encoding": "^2.18.0",
     "sodium-universal": "^5.0.1"
   },
   "devDependencies": {
