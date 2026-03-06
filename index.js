@@ -31,14 +31,15 @@ module.exports = class Obfuscator {
 
   static obfuscate(data, key) {
     const salt = b4a.alloc(Obfuscator.SALTBYTES)
-    const mask = b4a.alloc(data.byteLength)
+    const mask = b4a.alloc(Math.max(data.byteLength, sodium.crypto_generichash_BYTES_MIN))
 
     sodium.crypto_generichash(salt, data, key)
     sodium.crypto_generichash(mask, salt, key)
 
-    xor(mask, mask, data)
+    const m = mask.subarray(0, data.byteLength)
+    xor(m, m, data)
 
-    return c.encode(Payload, { data: mask, salt })
+    return c.encode(Payload, { data: m, salt })
   }
 
   static deobfuscate(payload, key) {
