@@ -31,10 +31,10 @@ module.exports = class Obfuscator {
 
   static obfuscate(data, key) {
     const salt = b4a.alloc(Obfuscator.SALTBYTES)
-    const mask = b4a.alloc(data.byteLength)
 
     sodium.crypto_generichash(salt, data, key)
-    sodium.crypto_generichash(mask, salt, key)
+
+    const mask = hash(salt, key, data.byteLength)
 
     xor(mask, mask, data)
 
@@ -44,14 +44,19 @@ module.exports = class Obfuscator {
   static deobfuscate(payload, key) {
     const { data, salt } = c.decode(Payload, payload)
 
-    const mask = b4a.alloc(data.byteLength)
-
-    sodium.crypto_generichash(mask, salt, key)
+    const mask = hash(salt, key, data.byteLength)
 
     xor(data, data, mask)
 
     return data
   }
+}
+
+function hash(salt, key, length) {
+  const hashLength = Math.max(length, sodium.crypto_generichash_BYTES_MIN)
+  const buffer = b4a.alloc(hashLength)
+
+  return hashLength === length ? buffer : buffer.subarray(0, length)
 }
 
 function xor(result, a, b) {
