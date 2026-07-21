@@ -1,6 +1,6 @@
 {
   "name": "obfuscate-data",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Reversibly obfuscate data with a secret key",
   "main": "index.js",
   "files": [
